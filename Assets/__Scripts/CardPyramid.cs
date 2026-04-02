@@ -2,28 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// This enum defines the specific states a card can be in.
-public enum eCardState {
-    drawpile,
-    tableau,
-    target,
-    discard
-}
+// Removed the duplicate eCardState enum from here
 
 public class CardPyramid : Card {
-    
+
     [Header("Set Dynamically: CardPyramid")]
     public eCardState state = eCardState.drawpile;
-    
-    // The hiddenBy list stores references to any cards that are on top of this one in the pyramid.
+
+    // The hiddenBy List stores references to any cards that are on top of this one
     public List<CardPyramid> hiddenBy = new List<CardPyramid>();
-    
+
     public int layoutID;
-    public SlotDef slotDef;
+    public JsonLayoutSlot slotDef; // Verified against your JSON scripts
 
     // Intercepts the player's mouse click
-    public void OnMouseUpAsButton() {
-        // Talks to YOUR specific main script (Prospector)
+    public override void OnMouseUpAsButton() {
+        // Talks to YOUR specific main script (Prospector/Pyramid)
         Prospector.S.CardClicked(this);
     }
 }

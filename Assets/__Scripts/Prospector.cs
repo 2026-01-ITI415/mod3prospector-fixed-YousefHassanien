@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;   // We’ll need this line later in the chap
 [RequireComponent(typeof(JsonParseLayout))]
 public class Prospector : MonoBehaviour
 {
-    private static Prospector S; // A private Singleton for Prospector
+    public static Prospector S; // A private Singleton for Prospector
 
     [Header("Dynamic")]
     public List<CardProspector> drawPile;
@@ -24,6 +24,9 @@ public class Prospector : MonoBehaviour
     // A Dictionary to pair mine layout IDs and actual Cards
     private Dictionary<int, CardProspector> mineIdToCardDict;                 // a
 
+    public void CardClicked(CardPyramid cp) {
+        print("Card clicked: " + cp.name);
+    }
 
     void Start()
     {
